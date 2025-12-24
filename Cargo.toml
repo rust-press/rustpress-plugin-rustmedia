@@ -1,0 +1,84 @@
+[package]
+name = "rustmedia"
+version = "0.1.0"
+edition = "2021"
+authors = ["RustPress Team"]
+description = "Media management plugin for RustPress CMS"
+license = "MIT"
+repository = "https://github.com/rustpress/rustmedia"
+keywords = ["rustpress", "cms", "media", "images", "files"]
+categories = ["multimedia", "web-programming"]
+
+[lib]
+name = "rustmedia"
+path = "src/lib.rs"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.0", features = ["full", "sync", "fs"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# UUID for media IDs
+uuid = { version = "1.0", features = ["v4", "v7", "serde"] }
+
+# Date/time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+
+# Async traits
+async-trait = "0.1"
+
+# Image processing
+image = { version = "0.25", features = ["jpeg", "png", "gif", "webp"] }
+
+# File type detection
+infer = "0.16"
+
+# MIME types
+mime = "0.3"
+mime_guess = "2.0"
+
+# Hashing for deduplication
+sha2 = "0.10"
+hex = "0.4"
+
+# File system operations
+walkdir = "2.4"
+
+# Regex for filename sanitization
+regex = "1.10"
+
+# URL handling
+url = "2.5"
+
+# HTTP types
+http = "1.0"
+
+# Base64 for data URLs
+base64 = "0.22"
+
+# Metadata extraction
+kamadak-exif = "0.5"
+
+# HTTP client for URL uploads
+reqwest = { version = "0.12", features = ["json"] }
+
+# MD5 for chunk checksums
+md5 = "0.7"
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[features]
+default = ["image-processing"]
+image-processing = []
+cloud-storage = []
